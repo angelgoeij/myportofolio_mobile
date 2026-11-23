@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/menu.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 
 class ItemHomepage {
@@ -43,6 +44,20 @@ class ItemCard extends StatelessWidget {
 							),
 						);
 					}
+          else if (item.name == "Tambah Pendidikan") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage())
+            );
+          }
+          else if (item.name == "Tambah Pengalaman") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ExperienceFormPage())
+            );
+          }
 				},
 				child: Container(
 					padding: const EdgeInsets.all(8),
@@ -53,7 +68,10 @@ class ItemCard extends StatelessWidget {
 							const SizedBox(height: 8),
 							Text(
 								item.name,
-								style: const TextStyle(color: Colors.white),
+								style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 12
+                ),
 							),
 						],
 					),

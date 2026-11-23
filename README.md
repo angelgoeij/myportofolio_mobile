@@ -73,3 +73,52 @@ To handle these limitations, I checked the suggestions against my existing code 
 Overall, I treated AI as a learning and debugging assistant rather than relying on it to write the entire project. I still reviewed the suggestions, made the necessary adjustments, and checked the final results myself.
 
 AI Prompting Log: https://chatgpt.com/share/6af73bbb-1114-83ec-8197-b82a2bd5e118
+
+### Assignment 8
+1. 
+    - Navigator.push() digunakan untuk membuka halaman baru di atas halaman saat ini. Halaman sebelumnya tetap tersimpan sehingga pengguna dapat kembali menggunakan tombol Back.
+    - Navigator.pushReplacement() digunakan untuk membuka halaman baru sekaligus menggantikan halaman sebelumnya, sehingga halaman lama tidak dapat dikembalikan menggunakan tombol Back.
+    - Navigator.pop() digunakan untuk menutup halaman yang sedang dibuka dan kembali ke halaman sebelumnya.
+
+Untuk membuka formulir dari kartu aksi, metode yang digunakan adalah Navigator.push(), karena pengguna dapat membuka formulir dan kembali ke halaman utama setelah selesai. Opsi Home pada Drawer menggunakan Navigator.pushReplacement() atau navigasi menuju halaman utama untuk mengarahkan pengguna kembali ke Home tanpa menumpuk halaman baru di atas halaman sebelumnya.
+
+
+2. Scaffold berfungsi sebagai kerangka utama halaman yang mengatur struktur seperti AppBar, Drawer, dan bagian konten.
+    - AppBar: Menampilkan judul halaman dan tombol navigasi.
+    - Drawer: Menyediakan menu navigasi untuk berpindah ke halaman lain.
+    - Scaffold: Menjaga susunan komponen halaman agar konsisten.
+Contohnya, warna utama portofolio dapat digunakan pada AppBar di halaman Home dan halaman Formulir. Dengan begitu, kedua halaman memiliki tampilan yang seragam dan mencerminkan identitas visual portofolio.
+
+
+3. Tata letak formulir dipilih agar setiap input tersusun secara vertikal dan mudah dibaca oleh pengguna. Susunan ini juga memudahkan pengguna mengisi formulir secara berurutan. Beberapa widget yang membantu mengatur tata letak adalah:
+    - SizedBox: Memberikan jarak antarinput agar formulir tidak terlihat terlalu padat.
+    - Padding: Memberikan ruang di sekitar konten agar tidak terlalu dekat dengan tepi layar.
+    - SingleChildScrollView: Memungkinkan pengguna menggulir formulir ke atas dan bawah ketika seluruh komponen tidak muat   di layar, misalnya saat keyboard muncul.
+Dengan kombinasi tersebut, formulir tetap nyaman digunakan pada berbagai ukuran layar.
+
+4. Ketiga komponen tersebut digunakan untuk memastikan data yang dimasukkan pengguna sudah sesuai sebelum disimpan.
+    - GlobalKey<FormState>: Digunakan untuk mengakses dan mengelola kondisi formulir, termasuk menjalankan proses validasi.
+    - validator: Berisi aturan untuk memeriksa apakah input pengguna valid atau tidak.
+    - validate(): Menjalankan seluruh fungsi validator pada formulir. Jika semua input valid, hasilnya true. Jika ada input yang tidak valid, hasilnya false dan pesan kesalahan akan ditampilkan.
+
+Contohnya, jika kolom email harus diisi dengan format email yang benar, input abc123 akan ditolak karena tidak memiliki format alamat email yang valid. Memilih jenis input atau papan ketik seperti TextInputType.emailAddress saja belum cukup untuk memastikan data valid. Pengaturan tersebut hanya membantu menampilkan papan ketik yang sesuai, tetapi tidak benar-benar memeriksa isi yang dimasukkan pengguna. Oleh karena itu, tetap diperlukan validator untuk memeriksa data sebelum disimpan.
+
+5. AI Disclosure: I used ChatGPT as a supporting tool during this assignment, mainly to understand Flutter navigation, implement the additional form page, review my code, and troubleshoot problems when I encountered difficulties. My prompting strategy was to provide specific questions, relevant code snippets, and descriptions of the expected behavior or problems I was facing. Instead of asking AI to complete the entire assignment, I focused on smaller tasks so I could understand the explanations and apply the solutions to my existing code.
+
+Some of the specific areas where I used AI assistance include:
+    - Understanding the differences between Navigator.push(), Navigator.pushReplacement(), and Navigator.pop(), and deciding which method was appropriate for opening the additional form page.
+    - Understanding how Scaffold, AppBar, and Drawer work together to maintain a consistent page structure and navigation experience.
+    - Learning how to implement navigation from the homepage action card and add a new option to the existing Drawer.
+    - Understanding the purpose of StatefulWidget, Form, and GlobalKey<FormState> when creating a form page.
+    - Learning how TextFormField, validator, and FormState.validate() work together to validate user input before submission.
+    - Understanding how to display submitted information using AlertDialog and showDialog().
+    - Learning how SingleChildScrollView, Padding, and SizedBox help organize form layouts, especially when screen space is limited or the keyboard is displayed.
+    - Reviewing my implementation and identifying potential improvements in navigation, form validation, and code organization.
+
+However, I also noticed some limitations when using AI. Some explanations were too general and did not always match the exact structure or implementation of my project. AI could also suggest alternative navigation methods or validation approaches that were not necessarily suitable for the assignment requirements. Additionally, suggested code sometimes required adjustments to work correctly with my existing widgets and project structure.
+
+To handle these limitations, I checked the suggestions against my existing code and the assignment requirements. I also referred to the previous tutorials to make sure the implementation followed the expected Flutter structure. Rather than accepting every suggestion directly, I reviewed the code, adjusted the implementation where necessary, and manually tested the navigation flow, form validation, and dialog behavior. I also used flutter analyze to identify potential code issues and reviewed the application to ensure that the form could be accessed through both the homepage action card and the Drawer.
+
+Overall, I treated AI as a learning and debugging assistant rather than relying on it to write the entire project. I still reviewed the suggestions, made the necessary adjustments, and checked the final results myself to ensure that I understood the implementation and that it fulfilled the assignment requirements.
+
+AI Prompting Log: https://chatgpt.com/share/6b039a9e-8504-83ec-9dcc-c3a7644c8123
