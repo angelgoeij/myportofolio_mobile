@@ -75,6 +75,23 @@ Overall, I treated AI as a learning and debugging assistant rather than relying 
 AI Prompting Log: https://chatgpt.com/share/6af73bbb-1114-83ec-8197-b82a2bd5e118
 
 ### Assignment 8
+
+-- 19 November, 2026
+
+I started working on the additional form assignment by reviewing the requirements and understanding how Flutter navigation works. I learned the differences between Navigator.push(), Navigator.pushReplacement(), and Navigator.pop(). After considering the expected navigation flow, I decided to use Navigator.push() to open the new form pages so users could return to the homepage using the back button.
+
+I continued by reviewing my existing project structure and learning how Scaffold, AppBar, and Drawer work together. I also explored the differences between StatefulWidget and StatelessWidget and decided to use StatefulWidget for the new form pages because they needed to manage user input and validation. One challenge I faced was understanding how GlobalKey<FormState> accesses the form's state, which I addressed by studying how Form and FormState work together.
+
+-- 21 November, 2026
+
+I started implementing the Education and Experience form pages in separate Dart files. I initially struggled to understand how TextFormField, validator, and FormState.validate() work together. After reviewing their behavior, I understood how to validate each input and prevent users from submitting empty or whitespace-only values.
+
+I worked on the form submission process by implementing an AlertDialog to display the submitted information after successful validation. I also improved the layout using Padding, SizedBox, and SingleChildScrollView. One challenge was making sure the Save button remained accessible when the keyboard appeared, so I used a scrollable layout to make the form easier to navigate.
+
+I integrated the new form pages into the existing homepage and Drawer by adding Education and Experience navigation options and action cards. I also checked the navigation flow to ensure users could access both forms and return to Home correctly. Finally, I reviewed the form validation, dialog behavior, and overall code structure against the assignment requirements and started preparing the README documentation.
+
+-- 23 November, 2026
+Reflective Questions:
 1. 
     - Navigator.push() digunakan untuk membuka halaman baru di atas halaman saat ini. Halaman sebelumnya tetap tersimpan sehingga pengguna dapat kembali menggunakan tombol Back.
     - Navigator.pushReplacement() digunakan untuk membuka halaman baru sekaligus menggantikan halaman sebelumnya, sehingga halaman lama tidak dapat dikembalikan menggunakan tombol Back.
