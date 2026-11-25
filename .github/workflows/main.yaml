@@ -1,0 +1,51 @@
+
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  # CI: Check formatting, analyze code, and run tests.
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v2
+    with:
+      flutter_channel: stable
+      working_directory: .
+      analyze_directories: lib test
+      format_directories: lib test
+      min_coverage: 0
+
+  # CD: Build Android APK after CI succeeds.
+  build_apk:
+    name: Build Android APK
+    needs: build
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release --dart-define=API_BASE_URL=${{ vars.API_BASE_URL }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: myportofolio-mobile-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
