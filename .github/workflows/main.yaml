@@ -1,25 +1,23 @@
 
-name: Flutter CI/CD
+name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  # CI: Check formatting, analyze code, and run tests.
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v2
     with:
-      flutter_channel: stable
-      working_directory: .
-      analyze_directories: lib test
-      format_directories: lib test
+      setup: dart run build_runner build --delete-conflicting-outputs
+      coverage_excludes: "**/*.g.dart"
       min_coverage: 0
+      timeout_minutes: 15
 
   # CD: Build Android APK after CI succeeds.
   build_apk:
